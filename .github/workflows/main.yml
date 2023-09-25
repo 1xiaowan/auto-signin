@@ -1,0 +1,19 @@
+name: 定期执行脚本
+
+on:
+  schedule:
+    - cron: '0 7 * * *'  # 每天午夜执行 (UTC 时间)
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v2
+
+      - name: 安装依赖
+        run: npm install  # 如果需要安装其他依赖，请修改为相应的命令
+
+      - name: 执行脚本
+        run: node app.js  # 替换为你的脚本名称
